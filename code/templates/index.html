@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="upload-section">
+        <form action="/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+             <input type="file" name="myfile" id="">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div class="download-section">
+        {% for file in files %}
+            <div class="item">
+                <h1>{{file.file.name}}</h1>
+                <a href={{file.file.url}}>Download</a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script src="static/script.js"></script>
+</body>
+</html>
